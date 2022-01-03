@@ -1,0 +1,36 @@
+<div class="container">
+    <div>
+      <h2>Modifier un Film :</h2>
+    </div>
+    <form >
+        <div  class="col-sm-2 col-md-2 col-lg-2" hidden>
+        <label >ID Film</label>
+        <input type="number" [(ngModel)]="currentFilm.idFilm" name="idFilm" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+        <label >Nom Film</label>
+        <input type="text"[(ngModel)]= "currentFilm.nom" name="nom" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >Genre</label>
+        <input type="text" [(ngModel)]= "currentFilm.genre" name="genre" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <label >Date Sortie</label>
+          <input  type="date"  [ngModel]="currentFilm.dateSortie | date: 'yyyy-MM-dd'" 
+          (ngModelChange)=" currentFilm.dateSortie= $event"   name="dateSortie" class="form-control">
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <select class="form-control form-control-lg" id="idAct" name="idAct" [(ngModel)]="currentFilm.acteur.idAct">
+            <option *ngFor="let act of acteurs" [value]="act.idAct">
+              {{act.nomAct}}
+              </option>
+        </select>
+      </div>
+        <div class="mt-2">
+        <button type="submit" (click)="updateFilm()" class="btn btn-success">Modifier</button>
+    </div>
+        
+        </form>
+        </div>
